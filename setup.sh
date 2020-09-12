@@ -16,4 +16,5 @@ yes | sudo apt-get install openssh-server && sudo systemctl enable ssh && sudo s
 yes | sudo apt-get install alien && yes | wget https://download.nomachine.com/download/6.11/Raspberry/nomachine_6.11.2_1_armhf.deb && yes | sudo dpkg -i nomachine_6.11.2_1_armhf.deb
 
 # Install Docker
-yes | sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg2 && yes | curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && yes | sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" && yes | sudo apt install docker-ce && sudo systemctl status docker
+# yes | sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg2 && yes | curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - && yes | sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" && yes | sudo apt install docker-ce && sudo systemctl status docker
+yes | sudo apt-get install docker.io
