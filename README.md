@@ -1,1 +1,1 @@
-curl -sSL https://raw.githubusercontent.com/chrisebell24/rasberrypi/master/setup.sh | sh
+curl -sSL https://raw.githubusercontent.com/chrisebell24/setup/master/rasberrypi.sh | sh
