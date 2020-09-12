@@ -10,7 +10,7 @@ exit
 sudo apt-get update
 
 # Install SSH & Firewall Settings
-sudo apt-get openssh-server && service ssh startsudo ufw allow 22 && sudo ufw allow 4000 && sudo ufw allow 8888
+sudo apt-get install openssh-server && sudo systemctl enable ssh && sudo systemctl start ssh && sudo ufw allow 22 && sudo ufw allow 4000 && sudo ufw allow 8888
 
 # Install No Machine
 sudo apt-get install alien && wget https://download.nomachine.com/download/6.11/Raspberry/nomachine_6.11.2_1_armhf.deb && sudo dpkg -i nomachine_6.11.2_1_armhf.deb
