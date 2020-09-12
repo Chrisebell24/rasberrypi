@@ -1,12 +1,13 @@
 #!/bin/bash
-# General
-sudo apt-get update
 
 # Wifi Settings
 sudo -s
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 chmod 644 /etc/resolv.conf
 exit
+
+# General
+sudo apt-get update
 
 # Install SSH & Firewall Settings
 sudo apt-get openssh-server && service ssh startsudo ufw allow 22 && sudo ufw allow 4000 && sudo ufw allow 8888
