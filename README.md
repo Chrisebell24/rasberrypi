@@ -1,5 +1,1 @@
-$ git clone https://github.com/Chrisebell24/rasberrypi.git
-
-$ sudo chmod +x rasberrypi/setup.sh
-
-$ yes | rasberrypi/setup.sh
+curl -sSL https://raw.githubusercontent.com/chrisebell24/rasberrypi/master/setup.sh | sh
