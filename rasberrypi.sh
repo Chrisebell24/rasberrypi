@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Wifi Settings
-#sudo -s
-#echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-#chmod 644 /etc/resolv.conf
-#exit
-
 # General
 yes | sudo apt-get update
 
