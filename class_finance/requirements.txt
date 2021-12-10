@@ -453,7 +453,6 @@ textdistance==4.2.1
 threadpoolctl==2.2.0
 three-merge==0.1.1
 thrift==0.13.0
-thriftpy==0.3.9
 tifffile==2021.7.2
 tinycss==0.4
 tk==0.1.0
