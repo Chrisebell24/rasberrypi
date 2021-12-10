@@ -1,3 +1,5 @@
+spacy
+wheel
 numpy
 pandas
 tensorflow
