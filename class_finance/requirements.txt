@@ -24,3 +24,4 @@ dash
 flask
 lightgbm
 statsmodels
+pymc3
