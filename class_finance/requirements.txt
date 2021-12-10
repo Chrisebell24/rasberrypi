@@ -16,3 +16,5 @@ scipy
 ipython
 sympy
 nose
+fbprophet
+beautifulsoup4
