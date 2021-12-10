@@ -6,7 +6,6 @@ torch
 sktime
 sklearn
 scipy
-bs4
 jupyter
 matplotlib
 spark-nlp
