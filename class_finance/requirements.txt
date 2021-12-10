@@ -17,3 +17,8 @@ sympy
 nose
 fbprophet
 beautifulsoup4
+Theano
+dash
+flask
+lightgbm
+statsmodels
