@@ -1,4 +1,4 @@
-pystan
+pystan==2.1.9
 spacy
 wheel
 numpy
@@ -18,7 +18,7 @@ scipy
 ipython
 sympy
 nose
-fbprophet
+prophet
 beautifulsoup4
 Theano
 dash
