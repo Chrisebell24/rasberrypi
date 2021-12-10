@@ -1,3 +1,4 @@
+pystan
 spacy
 wheel
 numpy
