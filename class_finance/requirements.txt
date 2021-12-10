@@ -9,3 +9,10 @@ scipy
 bs4
 jupyter
 matplotlib
+spark-nlp
+pyspark
+SQLAlchemy
+scipy
+ipython
+sympy
+nose
