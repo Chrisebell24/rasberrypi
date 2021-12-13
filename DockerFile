@@ -1,0 +1,92 @@
+FROM ubuntu:22.04
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=US/Chicago
+
+USER root
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
+
+RUN apt-get update && apt-get install -y \
+    tar \
+    wget \
+    bash \
+    rsync \
+    gcc \
+    libfreetype6-dev \
+    libhdf5-serial-dev \
+    libpng-dev \
+    libzmq3-dev \
+    unzip \
+    pkg-config \
+    software-properties-common \
+    graphviz \
+    git \
+    curl \
+    libgeos++-dev \
+    proj-data \
+    proj-bin \
+    libgeos-dev \
+    nodejs \
+    npm \
+    build-essential \
+    gcc \
+    python3-dev \
+    libffi-dev \
+    libssl-dev \
+    python3-pip \
+    openssh-server \
+    openssh-client
+
+ARG PYTHON_VERSION="3.7.5"
+RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
+RUN tar -xf Python-${PYTHON_VERSION}.tgz
+RUN cd ./Python-${PYTHON_VERSION} && ./configure --prefix=/usr/local/python${PYTHON_VERSION} --enable-loadable-sqlite-extensions --enable-shared && make install
+
+# Install OpenJDK-8
+RUN apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+
+# Fix certificate issues
+RUN apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
+# Setup JAVA_HOME -- useful for docker commandline
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> ~/.bashrc
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN pip3 install --upgrade pip
+RUN pip install jupyterlab notebook
+
+ENV url=https://raw.githubusercontent.com/Chrisebell24/setup/master/class_finance/requirements.txt
+RUN wget ${url}
+RUN cat requirements.txt | xargs -n 1 pip install
+
+# Install extensions
+RUN jupyter lab build
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN rm -rf requirements.txt
+
+RUN pip install jupyter_contrib_nbextensions
+RUN jupyter contrib nbextension install --sys-prefix
+
+
+EXPOSE 8888
+
+ENV ip='*'
+ENV user=chrisebell24
+ENV uid=1000
+ARG gid=1000
+ARG group=appuser
+ARG token=''
+ENV password=''
+
+RUN groupadd -g ${gid} ${group}
+RUN useradd -u ${uid} -g ${group} -s /bin/sh -m ${user}
+USER $user
+WORKDIR /home/${user}
+
+CMD jupyter notebook --no-browser --ip=$ip --NotebookApp.token=$token --NotebookApp.password=$password
