@@ -35,7 +35,9 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     python3-pip \
     openssh-server \
-    openssh-client
+    openssh-client \
+    tk -y
+
 
 ARG PYTHON_VERSION="3.7.5"
 RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
